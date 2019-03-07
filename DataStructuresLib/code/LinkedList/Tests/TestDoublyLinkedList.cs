@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace DataStructuresLib
+{
+    public class TestDoublyLinkedList
+    {
+        [Fact]
+        public void TestTestDoublyLinkedList()
+        {
+            int[] TestValues = new int[] { 1, 2, 3, 4 };
+            DoublyLinkedList<int> list = new DoublyLinkedList<int>();
+            for (int i = 0; i < TestValues.Length; i++) list.Add(TestValues[i]);
+            int index = 0;
+            foreach(int num in list)
+            {
+                Assert.Equal(TestValues[index++], num);
+            }
+        }
+
+        [Fact]
+        public void TestRemoveFirstSinglyDoublyLinkedList()
+        {
+            int[] TestIniticalValues = new int[] { 1, 2, 3, 4 };
+            int[] TestValues = new int[] { 2, 3, 4 };
+            DoublyLinkedList<int> list = new DoublyLinkedList<int>();
+            for (int i = 0; i < TestIniticalValues.Length; i++) list.Add(TestIniticalValues[i]);
+            int index = 0;
+            list.Remove(1);
+            foreach (int num in list)   Assert.Equal(TestValues[index++], num);
+        }
+
+        [Fact]
+        public void TestRemoveLastSinglyDoublyLinkedList()
+        {
+            int[] TestIniticalValues = new int[] { 1, 2, 3, 4 };
+            int[] TestValues = new int[] {1, 2, 3 };
+            DoublyLinkedList<int> list = new DoublyLinkedList<int>();
+            for (int i = 0; i < TestIniticalValues.Length; i++) list.Add(TestIniticalValues[i]);
+            int index = 0;
+            list.Remove(4);
+            foreach (int num in list)   Assert.Equal(TestValues[index++], num);
+        }
+
+        [Fact]
+        public void TestRemoveInCenterSinglyDoublyLinkedList()
+        {
+            int[] TestIniticalValues = new int[] { 1, 2, 3, 4 };
+            int[] TestValues = new int[] { 1, 3, 4 };
+            DoublyLinkedList<int> list = new DoublyLinkedList<int>();
+            for (int i = 0; i < TestIniticalValues.Length; i++) list.Add(TestIniticalValues[i]);
+            int index = 0;
+            list.Remove(2);
+            foreach (int num in list)  Assert.Equal(TestValues[index++], num);
+        }
+
+        [Fact]
+        public void TestRemoveSingleValueSinglyDoublyLinkedList()
+        {
+            int[] TestIniticalValues = new int[] { 1 };
+            DoublyLinkedList<int> list = new DoublyLinkedList<int>();
+            for (int i = 0; i < TestIniticalValues.Length; i++) list.Add(TestIniticalValues[i]);
+            int index = 0;
+            list.Remove(1);
+            foreach (int num in list) index++;
+            Assert.Equal(0, index);
+        }
+
+
+
+
+    }
+}
